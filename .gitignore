@@ -1,0 +1,6 @@
+.venv/
+docs/agent.md
+__pycache__/
+*.pyc
+config.json
+.vscode/
