@@ -5,10 +5,10 @@
 ![CUDA](https://img.shields.io/badge/CUDA-13.2-76B900)
 ![RAM](https://img.shields.io/badge/RAM-~575%20MB-yellow)
 
-Dictado por voz local, minimalista y 100% offline.
+Dictado por voz Rapido, minimalista y 100% local.
 
 - **Minimalista**: un solo script (`transcribe.py`), sin dependencias innecesarias.
-- **100% local**: tus datos nunca salen de tu equipo.
+- **100% local**: tus datos nunca salen de tu equipo, una vez instalado funciona sin internet.
 - **Acelerado por GPU**: compatible con NVIDIA CUDA 12 (también funciona en CPU).
 - **Bajo consumo de RAM**: ~575 MB durante el dictado (modelo `small` en GPU) y ~50 MB en espera.
 - **Configurable**: edita el keybind o el LLM a tu gusto en una linea de codigo.
