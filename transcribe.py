@@ -54,7 +54,7 @@ def create_overlay():
 
     overlay_label = tk.Label(
         overlay,
-        text="🎤 Grabando... Ctrl+Shift+Space",
+        text=f"🎤 Grabando... {HOTKEY}",
         fg="white",
         bg="#2d2d2d",
         font=("Segoe UI", 11),
@@ -123,7 +123,7 @@ def toggle_recording():
         elif state in ("idle", "transcribing"):
             state = "recording"
             is_recording = True
-            root.after(0, lambda: show_overlay("🎤 Grabando... Ctrl+Shift+Space"))
+            root.after(0, lambda: show_overlay(f"🎤 Grabando... {HOTKEY}"))
             threading.Thread(target=record_audio, daemon=True).start()
 
 

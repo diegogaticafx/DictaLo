@@ -1,13 +1,22 @@
 # DictaLo
 
+![Python](https://img.shields.io/badge/python-3.12-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![CUDA](https://img.shields.io/badge/CUDA-13.2-76B900)
+![RAM](https://img.shields.io/badge/RAM-~575%20MB-yellow)
+
 Dictado por voz local, minimalista y 100% offline.
 
 - **Minimalista**: un solo script (`transcribe.py`), sin dependencias innecesarias.
 - **100% local**: tus datos nunca salen de tu equipo.
 - **Acelerado por GPU**: compatible con NVIDIA CUDA 12 (también funciona en CPU).
 - **Bajo consumo de RAM**: ~575 MB durante el dictado (modelo `small` en GPU) y ~50 MB en espera.
-- **Configurable**: edita el keybind o el LLM en una linea de codigo.
+- **Configurable**: edita el keybind o el LLM a tu gusto en una linea de codigo.
 - **Uso Global**: funciona en cualquier ventana activa del sistema.
+
+<p align="center">
+  <img src="docs/DictaLo.gif" alt="Demo" width="750">
+</p>
 
 ## Requisitos
 
@@ -22,7 +31,7 @@ Dictado por voz local, minimalista y 100% offline.
 .\setup.ps1
 ```
 
-Este script crea el entorno virtual, instala las dependencias y agrega DictaLo al inicio de Windows.
+Este script crea el entorno virtual, instala las dependencias y agrega opcionalmente DictaLo al inicio de Windows.
 
 ## Uso
 
@@ -65,7 +74,7 @@ Cambia `"es"` por el código ISO 639-1 del idioma que desees utilizar, por ejemp
 ## Estructura del proyecto
 
 ```text
-whisperlocal/
+DictaLo/
 ├── .gitignore
 ├── LICENSE
 ├── requirements.txt

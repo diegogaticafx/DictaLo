@@ -5,11 +5,11 @@ param(
 $ErrorActionPreference = "Stop"
 $ProjectDir = Split-Path $PSCommandPath
 
-Write-Host "=== whisperlocal Uninstall ===" -ForegroundColor Cyan
+Write-Host "=== DictaLo Uninstall ===" -ForegroundColor Cyan
 Write-Host ""
 
 # 1. Kill any running pythonw process from this project
-Write-Host "[1/3] Deteniendo whisperlocal..." -ForegroundColor Yellow
+Write-Host "[1/3] Deteniendo DictaLo..." -ForegroundColor Yellow
 $target = Resolve-Path "$ProjectDir\.venv\Scripts\pythonw.exe" -ErrorAction SilentlyContinue
 if ($target) {
     Get-Process -Name "pythonw" -ErrorAction SilentlyContinue | Where-Object {
@@ -21,7 +21,7 @@ Write-Host "     OK" -ForegroundColor Green
 # 2. Remove startup shortcut
 Write-Host "[2/3] Eliminando acceso directo de inicio de Windows..." -ForegroundColor Yellow
 $StartupFolder = [Environment]::GetFolderPath("Startup")
-$ShortcutPath = Join-Path $StartupFolder "whisperlocal.lnk"
+$ShortcutPath = Join-Path $StartupFolder "DictaLo.lnk"
 if (Test-Path $ShortcutPath) {
     Remove-Item $ShortcutPath -Force
     Write-Host "     Eliminado: $ShortcutPath" -ForegroundColor Green
@@ -44,7 +44,7 @@ if ($confirm -eq "y") {
     Remove-Item $ProjectDir -Recurse -Force
     Write-Host "     Proyecto eliminado." -ForegroundColor Green
     Write-Host ""
-    Write-Host "=== whisperlocal ha sido desinstalado ===" -ForegroundColor Cyan
+    Write-Host "=== DictaLo ha sido desinstalado ===" -ForegroundColor Cyan
 } else {
     Write-Host "     Proyecto conservado en: $ProjectDir" -ForegroundColor Gray
     Write-Host "     Para iniciarlo manualmente: .\run.bat" -ForegroundColor Gray

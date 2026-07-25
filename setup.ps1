@@ -5,7 +5,7 @@ param(
 $ErrorActionPreference = "Stop"
 $ProjectDir = Split-Path $PSCommandPath
 
-Write-Host "=== whisperlocal Setup ===" -ForegroundColor Cyan
+Write-Host "=== DictaLo Setup ===" -ForegroundColor Cyan
 Write-Host ""
 
 # 1. Create virtual environment if it doesn't exist
@@ -22,23 +22,28 @@ Write-Host "[2/3] Instalando dependencias..." -ForegroundColor Yellow
 & "$ProjectDir\.venv\Scripts\pip.exe" install -r "$ProjectDir\requirements.txt"
 if (-not $?) { throw "Error al instalar dependencias" }
 
-# 3. Create startup shortcut (unless --NoStartup)
-if (-not $NoStartup) {
+# 3. Create startup shortcut
+Write-Host ""
+$CreateStartup = Read-Host "¿Quieres que DictaLo inicie automaticamente con Windows? (S/N)"
+
+if ($CreateStartup -match "^[sS]$") {
     Write-Host "[3/3] Creando acceso directo en inicio de Windows..." -ForegroundColor Yellow
+
     $StartupFolder = [Environment]::GetFolderPath("Startup")
-    $ShortcutPath = Join-Path $StartupFolder "whisperlocal.lnk"
+    $ShortcutPath = Join-Path $StartupFolder "DictaLo.lnk"
 
     $wshell = New-Object -ComObject WScript.Shell
     $shortcut = $wshell.CreateShortcut($ShortcutPath)
     $shortcut.TargetPath = "$ProjectDir\.venv\Scripts\pythonw.exe"
     $shortcut.Arguments = "`"$ProjectDir\transcribe.py`""
     $shortcut.WorkingDirectory = "$ProjectDir"
-    $shortcut.Description = "whisperlocal - Dictado por voz local"
+    $shortcut.Description = "DictaLo - Dictado por voz local"
     $shortcut.Save()
 
     Write-Host "     Creado en: $ShortcutPath" -ForegroundColor Green
-} else {
-    Write-Host "[3/3] Omitido (--NoStartup)" -ForegroundColor Gray
+}
+else {
+    Write-Host "[3/3] Inicio automático omitido" -ForegroundColor Gray
 }
 
 Write-Host ""
